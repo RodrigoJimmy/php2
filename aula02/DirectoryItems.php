@@ -6,9 +6,11 @@
  */
 class DirectoryItems {
 
-    var $fileArray = array(); 
-    
-        function DirectoryItems($directory) { 
+    // public, protected, private
+    private $fileArray = array(); 
+        
+    function __construct($directory) {
+
         $d = "";
         if(is_dir($directory)) {
             $d = opendir($directory) or 
@@ -26,6 +28,11 @@ class DirectoryItems {
             //error
             die("Deve-se informar um diretório"); 
         }
+    }
+
+    public function getFileArray()
+    {
+        return $this->fileArray;
     }
 
     function indexOrder() {
