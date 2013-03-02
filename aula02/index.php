@@ -1,33 +1,30 @@
-<html>
-    <head>
-        <title>Imagens</title>
-    </head>
-    <body>
-
 <?php
 require 'DirectoryItems.php';
-$di = new DirectoryItems('fotos');
 
-echo "<pre>";
-print_r($di->getFileArray());
+$dc = new DirectoryItems('fotos');
+$dc->filter();
 
-$di->filter();
-print_r($di->getFileArray());
-die();
+$path = "";
+$fileArray = $dc->getFileArray();
 
+echo '<div style="text-align: center;">';
+echo "Clique no nome do arquivo para exibir a imagem no tamanho original.<br />" ;
 
-$di->checkAllImages() or die("Not all files are images.");
-$di->naturalCaseInsensitiveOrder();
+ //especifica o tamanho dos thumbnails
+$size = 100;
+foreach($fileArray as $key => $value) {
+	$path = "fotos/$key";
+	/*
+	 * erros no script getthumb ou na classe resultarÃ£o em links 
+	 * quebrados. Os erros serao ocultados
+	 */
+	echo "<img src='getthumb.php?path=$path&size=$size'
+			   style='border:1px solid black; margin-top:20px;'
+			   alt='$value' />
+		 <br>";
 
-
-//mostra o filearray
-echo "<div style = 'text-align:center;'>";
-foreach($di->getFileArray() as $key => $value) {
-    echo "<img src='fotos/$value' /><br>";
-
+	echo "<a href='$path' target='_blank' >";
+	echo "Title: $value </a> <br>";
 }
-echo "</div><br>";
+echo "</div> <br>";
 ?>
-    
-    </body>
-</html>
