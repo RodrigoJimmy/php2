@@ -15,7 +15,7 @@ $size = 100;
 foreach($fileArray as $key => $value) {
 	$path = "fotos/$key";
 	/*
-	 * erros no script getthumb ou na classe resultarÃ£o em links 
+	 * erros no script getthumb ou na classe resultara em links 
 	 * quebrados. Os erros serao ocultados
 	 */
 	echo "<img src='getthumb.php?path=$path&size=$size'
