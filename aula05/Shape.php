@@ -1,6 +1,7 @@
 <?php
+require_once 'IShape.php';
 
-abstract class Shape {
+ abstract class Shape implements IShape {
     
     protected $x, $y;
     
