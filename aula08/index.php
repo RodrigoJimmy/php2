@@ -3,5 +3,5 @@ require_once "vendor/autoload.php";
 
 $smarty = new Smarty();
 
-echo "<pre>";
-print_r($smarty);
+$smarty->assign('nome', 'Rodrigo de Lima Vieira');
+$smarty->display('index.tpl');
